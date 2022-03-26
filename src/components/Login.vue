@@ -16,6 +16,7 @@
               v-model="form.password"
               required
           ></v-text-field>
+          <v-btn color="primary" link :to="{name:'register'}" class="mx-3">Register</v-btn>
           <v-btn color="success" type="submit">Login</v-btn>
         </v-form>
       </v-col>
@@ -30,6 +31,7 @@ export default {
   name: "Login",
   data() {
     return {
+      errors: null,
       form: {
         email: null,
         password: null
@@ -37,8 +39,15 @@ export default {
     }
   },
   methods: {
-    login() {
-      User.login(this.form)
+    async login() {
+      try {
+        const response = await User.login(this.form)
+        if (response.status === 200) {
+          await this.$router.push({name: 'forum'})
+        }
+      } catch (e) {
+        this.errors = e.response.data.errors;
+      }
     }
   }
 }

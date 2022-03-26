@@ -6,8 +6,18 @@ export default new class User {
         try {
             const response = await axios.post('/api/auth/login', data)
             this.responseAfterLogin(response.data)
+            return Promise.resolve(response)
         } catch (e) {
-            console.log(e.response.data.errors)
+            return Promise.reject(e)
+        }
+    }
+
+    async register(data) {
+        try {
+            const response = await axios.post('/api/auth/register', data)
+            return this.login(data)
+        } catch (e) {
+            return Promise.reject(e)
         }
     }
 
