@@ -25,7 +25,6 @@
 
 
 <script>
-import axios from "axios";
 
 export default {
   name: "Login",
@@ -38,13 +37,8 @@ export default {
     }
   },
   methods: {
-    async login() {
-      try {
-        const response = await axios.post('/api/auth/login', this.form)
-        console.log(response.data)
-      } catch (e) {
-        console.log(e.response.data)
-      }
+    login() {
+      User.login(this.form)
     }
   }
 }
