@@ -1,10 +1,9 @@
-import user from "./User";
-
 export default new class AppStorage {
     #token = null
     #user = null
 
     setToken(token) {
+        this.#token = token;
         localStorage.setItem('token', this.#token)
     }
 
@@ -34,5 +33,10 @@ export default new class AppStorage {
         this.#token = null
         this.#user = null
     }
+
+    hasToken() {
+        return this.#token !== null ?? false;
+    }
+
 
 }
