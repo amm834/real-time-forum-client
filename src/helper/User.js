@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class User {
+export default new class User {
     async login(data) {
         try {
             const response = await axios.post('/api/auth/login', data)
@@ -10,5 +10,3 @@ class User {
         }
     }
 }
-
-export default User = new User();
