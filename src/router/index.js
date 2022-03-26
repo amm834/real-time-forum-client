@@ -3,6 +3,7 @@ import Login from "../components/Login.vue";
 import AppHome from "../components/AppHome.vue";
 import Register from "../components/Register.vue";
 import Forum from "../components/Forum.vue";
+import Logout from "../components/Logout.vue";
 
 const routes = [
     {
@@ -22,7 +23,7 @@ const routes = [
     },
     {
         path: '/logout',
-        component: Register,
+        component: Logout,
         name: 'logout'
     },
     {

@@ -27,7 +27,7 @@ export default new class User {
     }
 
     isLoggedIn() {
-        return AppStorage.getUser() !== null && AppStorage.hasToken();
+        return AppStorage.getUser() !== null && AppStorage.getToken() !== null;
     }
 
     name() {

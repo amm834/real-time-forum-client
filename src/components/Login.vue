@@ -31,7 +31,7 @@ export default {
   name: "Login",
   created() {
     if (User.isLoggedIn()) {
-      return  this.$router.push({name: 'forum'})
+      return this.$router.push({name: 'forum'})
     }
   },
   data() {

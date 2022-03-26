@@ -29,9 +29,10 @@ export default {
   created() {
     this.isLoggedIn = User.isLoggedIn()
   },
+
   data() {
     return {
-      isLoggedIn: false
+      isLoggedIn: null
     }
   }
 }

@@ -13,7 +13,7 @@ export default new class AppStorage {
     }
 
     getToken() {
-        this.#token = JSON.parse(localStorage.getItem('token'))
+        this.#token = localStorage.getItem('token')
         return this.#token
     }
 
