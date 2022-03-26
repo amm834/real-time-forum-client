@@ -24,7 +24,7 @@ export default {
     try {
       const response = await axios.get('/api/questions')
       this.questions = response.data.data
-
+      console.log(this.questions)
     } catch (e) {
       this.errors = e.response.data
     }

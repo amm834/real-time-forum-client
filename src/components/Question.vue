@@ -15,7 +15,7 @@
       </v-card-header>
       <v-card-subtitle>
         <v-icon class="mx-2">mdi-clock</v-icon>
-        {{ question.created_at }}
+        {{ question.created_at }} | By {{question.name}}
       </v-card-subtitle>
       <v-card-text> {{ question.body }}</v-card-text>
     </v-card>
