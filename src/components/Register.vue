@@ -59,6 +59,11 @@ export default {
       errors: null
     }
   },
+  created() {
+    if (User.isLoggedIn()) {
+      return this.$router.push({name: 'forum'})
+    }
+  },
   methods: {
     async register() {
       try {

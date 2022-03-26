@@ -21,6 +21,11 @@ const routes = [
         name: 'register'
     },
     {
+        path: '/logout',
+        component: Register,
+        name: 'logout'
+    },
+    {
         path: '/forum',
         component: Forum,
         name: 'forum'
