@@ -16,11 +16,7 @@ const vuetify = createVuetify({
     directives
 })
 
-window.axios = axios.create({
-    headers: {
-        'Accept': 'application/json',
-    },
-})
+window.axios = axios.create()
 
 axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials = true

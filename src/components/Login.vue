@@ -2,6 +2,7 @@
   <v-container>
     <v-row justify="center">
       <v-col md="8">
+        <h1 class="text-center my-3 font-weight-medium">Login</h1>
         <v-form @submit.prevent="login">
           <v-text-field
               label="Email"
@@ -37,12 +38,13 @@ export default {
     }
   },
   methods: {
-    login() {
-      axios.get('/sanctum/csrf-cookie')
-          .then(res => {
-            console.log(res)
-            axios.post('/api/auth/login', this.form)
-          })
+    async login() {
+      try {
+        const response = await axios.post('/api/auth/login', this.form)
+        console.log(response.data)
+      } catch (e) {
+        console.log(e.response.data)
+      }
     }
   }
 }

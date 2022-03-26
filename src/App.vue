@@ -6,13 +6,10 @@
     </v-main>
   </v-app>
 </template>
-
 <script>
 import AppToolBar from "./components/AppToolBar.vue";
 
 export default {
-  components: {
-    AppToolBar
-  }
+  components: {AppToolBar}
 }
 </script>
