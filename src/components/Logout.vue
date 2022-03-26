@@ -5,9 +5,10 @@
 <script>
 export default {
   name: "Logout",
-  mounted() {
+  created() {
     User.logout()
-    location.href = '/forum'
+    this.$store.commit('setLoggedIn', false)
+    this.$router.push({name: 'forum'})
   }
 }
 </script>

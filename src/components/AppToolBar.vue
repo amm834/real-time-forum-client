@@ -24,16 +24,12 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: "AppToolBar",
-  created() {
-    this.isLoggedIn = User.isLoggedIn()
-  },
-
-  data() {
-    return {
-      isLoggedIn: null
-    }
+  computed: {
+    ...mapGetters(['isLoggedIn'])
   }
 }
 </script>

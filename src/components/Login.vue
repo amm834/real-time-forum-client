@@ -26,11 +26,12 @@
 
 
 <script>
+import {mapGetters} from 'vuex'
 
 export default {
   name: "Login",
   created() {
-    if (User.isLoggedIn()) {
+    if (!this.isLoggedIn) {
       return this.$router.push({name: 'forum'})
     }
   },
@@ -40,20 +41,22 @@ export default {
       form: {
         email: null,
         password: null
-      }
+      },
     }
   },
   methods: {
     async login() {
       try {
         const response = await User.login(this.form)
-        if (response.status === 200) {
-          await this.$router.push({name: 'forum'})
-        }
+        this.$store.commit('setLoggedIn', true)
+        await this.$router.push({name: 'forum'})
       } catch (e) {
         this.errors = e.response.data.errors;
       }
     }
+  },
+  computed: {
+    ...mapGetters(['isLoggedIn'])
   }
 }
 </script>

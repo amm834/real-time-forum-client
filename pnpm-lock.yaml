@@ -9,12 +9,14 @@ specifiers:
   vue: ^3.2.25
   vue-router: ^4.0.14
   vuetify: ^3.0.0-beta.0
+  vuex: ^4.0.2
 
 dependencies:
   axios: 0.26.1
   vue: 3.2.31
   vue-router: 4.0.14_vue@3.2.31
   vuetify: 3.0.0-beta.0_vue@3.2.31
+  vuex: 4.0.2_vue@3.2.31
 
 devDependencies:
   '@mdi/font': 6.5.95
@@ -619,5 +621,14 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
+      vue: 3.2.31
+    dev: false
+
+  /vuex/4.0.2_vue@3.2.31:
+    resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==}
+    peerDependencies:
+      vue: ^3.0.2
+    dependencies:
+      '@vue/devtools-api': 6.1.3
       vue: 3.2.31
     dev: false

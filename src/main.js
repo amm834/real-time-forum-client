@@ -8,6 +8,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import router from "./router";
 import axios from "axios";
 import User from './helper/User'
+import store from "./store";
 
 const vuetify = createVuetify({
     icons: {
@@ -30,6 +31,7 @@ window.User = User;
 
 const app = createApp(App)
 app.use(router)
+app.use(store)
 app.use(vuetify)
 
 app.mount('#app')

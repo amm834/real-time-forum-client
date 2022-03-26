@@ -45,6 +45,7 @@
 
 
 <script>
+import {mapGetters} from "vuex";
 
 export default {
   name: "Register",
@@ -56,11 +57,11 @@ export default {
         password: null,
         password_confirmation: null
       },
-      errors: null
+      errors: null,
     }
   },
   created() {
-    if (User.isLoggedIn()) {
+    if (!this.isLoggedIn) {
       return this.$router.push({name: 'forum'})
     }
   },
@@ -75,6 +76,9 @@ export default {
         this.errors = e.response.data.errors
       }
     }
+  },
+  computed: {
+    ...mapGetters(['isLoggedIn'])
   }
 }
 </script>
