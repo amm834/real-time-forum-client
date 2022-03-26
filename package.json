@@ -9,15 +9,15 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
-    "vue": "^3.2.25",
+    "vue": "^3.2.31",
     "vue-router": "^4.0.14",
     "vuetify": "^3.0.0-beta.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@mdi/font": "^6.5.95",
-    "@vitejs/plugin-vue": "^2.2.0",
+    "@vitejs/plugin-vue": "^2.2.4",
     "sass": "^1.49.9",
-    "vite": "^2.8.0"
+    "vite": "^2.8.6"
   }
 }

@@ -4,6 +4,7 @@ import Register from "../components/Register.vue";
 import Forum from "../components/Forum.vue";
 import Logout from "../components/Logout.vue";
 import SingleQuestion from "../components/SingleQuestion.vue";
+import AskQuestion from "../components/AskQuestion.vue";
 
 const routes = [
     // main
@@ -38,7 +39,13 @@ const routes = [
         path: '/questions/:slug',
         component: SingleQuestion,
         name: 'questions'
-    }
+    },
+    // ask-question
+    {
+        path: '/ask-question',
+        component: AskQuestion,
+        name: 'ask-question'
+    },
 ]
 
 export default createRouter({

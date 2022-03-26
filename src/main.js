@@ -30,6 +30,7 @@ axios.defaults.withCredentials = true
 window.User = User;
 
 const app = createApp(App)
+
 app.use(router)
 app.use(store)
 app.use(vuetify)

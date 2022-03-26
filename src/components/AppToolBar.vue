@@ -12,7 +12,7 @@
 
       <v-spacer></v-spacer>
       <v-btn link :to="{name:'forum'}">Forum</v-btn>
-      <v-btn>Ask Question</v-btn>
+      <v-btn link :to="{name:'ask-question'}">Ask Question</v-btn>
       <v-btn>Category</v-btn>
       <template v-if="!isLoggedIn">
         <v-btn link :to="{name:'login'}">Login</v-btn>
