@@ -12,13 +12,12 @@
 
       <v-spacer></v-spacer>
       <v-btn link :to="{name:'forum'}">Forum</v-btn>
-      <v-btn link :to="{name:'ask-question'}">Ask Question</v-btn>
       <v-btn>Category</v-btn>
-      <template v-if="!isLoggedIn">
-        <v-btn link :to="{name:'login'}">Login</v-btn>
-        <v-btn link :to="{name:'register'}">Register</v-btn>
+      <template v-if="isLoggedIn">
+        <v-btn link :to="{name:'questions.ask'}">Ask Question</v-btn>
+        <v-btn link :to="{name:'logout'}">Logout</v-btn>
       </template>
-      <v-btn link :to="{name:'logout'}" v-else>Logout</v-btn>
+      <v-btn link :to="{name:'login'}" v-else>Login</v-btn>
     </v-toolbar>
   </div>
 </template>

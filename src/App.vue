@@ -10,6 +10,11 @@
 import AppToolBar from "./components/AppToolBar.vue";
 
 export default {
-  components: {AppToolBar}
+  components: {AppToolBar},
+  created() {
+    if (User.isLoggedIn()) {
+      this.$store.commit('setLoggedIn', true)
+    }
+  }
 }
 </script>

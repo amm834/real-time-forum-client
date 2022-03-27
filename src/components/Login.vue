@@ -30,11 +30,6 @@ import {mapGetters} from 'vuex'
 
 export default {
   name: "Login",
-  created() {
-    if (!this.isLoggedIn) {
-      return this.$router.push({name: 'forum'})
-    }
-  },
   data() {
     return {
       errors: null,
@@ -42,6 +37,11 @@ export default {
         email: null,
         password: null
       },
+    }
+  },
+  created() {
+    if (this.isLoggedIn) {
+      return this.$router.push({name: 'forum'})
     }
   },
   methods: {

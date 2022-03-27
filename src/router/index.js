@@ -44,11 +44,15 @@ const routes = [
     {
         path: '/ask-question',
         component: AskQuestion,
-        name: 'ask-question'
+        name: 'questions.ask'
     },
 ]
 
-export default createRouter({
+
+const router = createRouter({
     history: createWebHistory(),
     routes
 })
+
+
+export default router;

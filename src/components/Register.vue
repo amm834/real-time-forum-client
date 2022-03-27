@@ -30,7 +30,7 @@
               label="Confirm Password"
               type="password"
               v-model="form.password_confirmation"
-              :error-messages="errors?.password.toString().includes('confirmation') ? errors.password[0] : ''"
+              :error-messages="errors?.password?.toString().includes('confirmation') ? errors.password[0] : ''"
               required
           ></v-text-field>
 
@@ -61,8 +61,8 @@ export default {
     }
   },
   created() {
-    if (!this.isLoggedIn) {
-      return this.$router.push({name: 'forum'})
+    if (this.isLoggedIn){
+      return this.$router.push({name:'forum'})
     }
   },
   methods: {

@@ -15,7 +15,9 @@
           <v-spacer></v-spacer>
           <v-btn color="purple">5 replies</v-btn>
         </v-card-header>
-        <v-card-text> {{ question.body }}</v-card-text>
+        <v-card-text>
+          <div v-html="question.body"></div>
+        </v-card-text>
       </v-card>
     </v-container>
   </div>
