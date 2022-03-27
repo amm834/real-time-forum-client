@@ -9,7 +9,7 @@
             class="hidden-sm-and-down"
             md="4"
         >
-          Hi
+          <side-bar></side-bar>
         </v-col>
       </v-row>
     </v-container>
@@ -17,12 +17,13 @@
 </template>
 
 <script>
-import Question from "./Question.vue";
 import axios from "axios";
+import Question from "./Question.vue";
+import SideBar from "./SideBar.vue";
 
 export default {
   name: "Forum",
-  components: {Question},
+  components: {SideBar, Question},
   async created() {
     try {
       const response = await axios.get('/api/questions')
