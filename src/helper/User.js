@@ -37,4 +37,8 @@ export default new class User {
     logout() {
         AppStorage.clear();
     }
+
+    isAuthUser(id){
+        return AppStorage.getUser().id === id;
+    }
 }

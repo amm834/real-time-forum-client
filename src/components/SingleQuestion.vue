@@ -22,6 +22,20 @@
             :html="true"
             class="rounded"
         />
+        <v-card-actions class="mt-3 d-flex justify-end" v-if="isActionable">
+          <v-btn color="success">
+            <v-icon left>
+              mdi-pencil
+            </v-icon>
+            Edit
+          </v-btn>
+          <v-btn color="red">
+            <v-icon left>
+              mdi-delete
+            </v-icon>
+            Delete
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-container>
   </div>
@@ -39,7 +53,8 @@ export default {
   },
   data() {
     return {
-      question: Object,
+      question: {},
+      isActionable: false
     }
   },
   mounted() {
@@ -51,10 +66,14 @@ export default {
         const slug = this.$route.params.slug
         const response = await axios.get(`/api/questions/${slug}`)
         this.question = response.data.data
+        const auth = User.isAuthUser(this.question.user_id)
+        if (auth) {
+          this.isActionable = true;
+        }
       } catch (e) {
         console.log(e.response)
       }
     }
-  }
+  },
 }
 </script>

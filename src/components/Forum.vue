@@ -5,7 +5,10 @@
         <v-col md="8" sm="12">
           <question :questions="questions"></question>
         </v-col>
-        <v-col md="4">
+        <v-col
+            class="hidden-sm-and-down"
+            md="4"
+        >
           Hi
         </v-col>
       </v-row>
