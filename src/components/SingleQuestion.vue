@@ -29,7 +29,9 @@
             </v-icon>
             Edit
           </v-btn>
-          <v-btn color="red">
+          <v-btn color="red"
+                 @click="deleteQuestion(question.slug)"
+          >
             <v-icon left>
               mdi-delete
             </v-icon>
@@ -69,6 +71,16 @@ export default {
         const auth = User.isAuthUser(this.question.user_id)
         if (auth) {
           this.isActionable = true;
+        }
+      } catch (e) {
+        console.log(e.response)
+      }
+    },
+    async deleteQuestion(slug) {
+      try {
+        const response = await axios.delete(`/api/questions/${slug}`)
+        if (response.status === 204) {
+          await this.$router.push({name: 'forum'})
         }
       } catch (e) {
         console.log(e.response)
