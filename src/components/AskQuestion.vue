@@ -7,6 +7,7 @@
           label="Title"
           type="text"
           v-model="form.title"
+          :error-messages="errors?.title[0]"
       ></v-text-field>
 
       <!--    category-->
@@ -19,6 +20,7 @@
         >
           Choose Category
         </v-btn>
+        <div class="text-red" v-if="errors?.category_id">{{ errors?.category_id[0] }}</div>
         <v-card
             class="mx-auto"
             v-if="showMenu"
@@ -57,6 +59,7 @@
             placeholder="You can write in markdown"
             v-model="form.body"
             v-if="tab === 'edit'"
+            :error-messages="errors?.body[0]"
         ></v-textarea>
         <markdown
             :source="form.body"
@@ -120,9 +123,11 @@ export default {
     async askQuestion() {
       try {
         const response = await axios.post('/api/questions', this.form)
-        console.log(response.data)
+        if (response.status === 201) {
+          await this.$router.push({name: 'forum'})
+        }
       } catch (e) {
-        console.log(e.response.data)
+        this.errors = e.response.data.errors
       }
     }
   }
