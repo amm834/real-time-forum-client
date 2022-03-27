@@ -23,7 +23,15 @@
             class="rounded"
         />
         <v-card-actions class="mt-3 d-flex justify-end" v-if="isActionable">
-          <v-btn color="success">
+          <v-btn color="success" link
+                 :to="{
+            name:'questions.edit',
+            params:{
+              slug:question.slug
+            }
+          }"
+
+          >
             <v-icon left>
               mdi-pencil
             </v-icon>

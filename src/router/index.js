@@ -5,6 +5,7 @@ import Forum from "../components/Forum.vue";
 import Logout from "../components/Logout.vue";
 import SingleQuestion from "../components/SingleQuestion.vue";
 import AskQuestion from "../components/AskQuestion.vue";
+import EditQuestion from "../components/EditQuestion.vue";
 
 const routes = [
     // main
@@ -39,6 +40,11 @@ const routes = [
         path: '/questions/:slug',
         component: SingleQuestion,
         name: 'questions'
+    },
+    {
+        path: '/questions/:slug/edit',
+        component: EditQuestion,
+        name: 'questions.edit'
     },
     // ask-question
     {
