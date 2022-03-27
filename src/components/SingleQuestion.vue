@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-card elevation="2" class="mb-3">
+      <v-card elevation="2" class="mb-3 v-container">
         <v-card-header>
           <div>
             <v-card-title>
@@ -15,9 +15,13 @@
           <v-spacer></v-spacer>
           <v-btn color="purple">5 replies</v-btn>
         </v-card-header>
-        <v-card-text>
-          <div v-html="question.body"></div>
-        </v-card-text>
+
+        <markdown
+            :source="question.body"
+            :linkify="true"
+            :html="true"
+            class="rounded"
+        />
       </v-card>
     </v-container>
   </div>
@@ -26,9 +30,13 @@
 
 <script>
 import axios from "axios";
+import Markdown from "vue3-markdown-it";
 
 export default {
   name: "SingleQuestion",
+  components: {
+    Markdown
+  },
   data() {
     return {
       question: Object,
@@ -50,7 +58,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -7,7 +7,7 @@
           label="Title"
           type="text"
           v-model="form.title"
-          :error-messages="errors?.title[0]"
+          :error-messages="errors?.title"
       ></v-text-field>
 
       <!--    category-->
@@ -59,7 +59,7 @@
             placeholder="You can write in markdown"
             v-model="form.body"
             v-if="tab === 'edit'"
-            :error-messages="errors?.body[0]"
+            :error-messages="errors?.body"
         ></v-textarea>
         <markdown
             :source="form.body"
