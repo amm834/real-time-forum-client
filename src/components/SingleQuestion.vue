@@ -61,22 +61,27 @@
           {{ reply.reply }}
         </v-card-text>
         <v-card-actions
-        v-if="isActionable"
         >
-          <v-btn icon color="orange">
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
-          <v-btn icon color="error">
-            <v-icon>mdi-delete</v-icon>
-          </v-btn>
+          <div v-if="isReplyable(reply.user_id)">
+            <v-btn icon color="orange">
+              <v-icon>mdi-pencil</v-icon>
+            </v-btn>
+            <v-btn icon color="error">
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
+          </div>
           <v-spacer></v-spacer>
 
 
-          <v-btn icon color="red">
+          <v-btn icon>
             <v-icon>mdi-heart</v-icon>
           </v-btn>
         </v-card-actions>
       </v-card>
+      <!--     reply-->
+      <reply-question
+          :slug="question.slug"
+      ></reply-question>
 
     </v-container>
   </div>
@@ -86,17 +91,21 @@
 <script>
 import axios from "axios";
 import Markdown from "vue3-markdown-it";
+import ReplyQuestion from "./ReplyQuestion.vue";
+import User from "../helper/User";
 
 export default {
   name: "SingleQuestion",
   components: {
+    ReplyQuestion,
     Markdown
   },
   data() {
     return {
       question: {},
       isActionable: false,
-      replies: []
+      replies: [],
+      user_id: null
     }
   },
   async mounted() {
@@ -115,7 +124,7 @@ export default {
           this.isActionable = true;
         }
       } catch (e) {
-        console.log(e.response)
+        // console.log(e.response)
       }
     },
     async deleteQuestion(slug) {
@@ -125,21 +134,23 @@ export default {
           await this.$router.push({name: 'forum'})
         }
       } catch (e) {
-        console.log(e.response)
+        // console.log(e.response)
       }
     },
     async getAllReplies() {
       try {
         const slug = this.question.slug ?? null;
-        console.log(slug)
         const res = await axios.get(`/api/questions/${slug}/replies`)
         if (res.status === 200) {
           this.replies = res.data.data
         }
       } catch (e) {
-        console.log(e)
+        // console.log(e)
       }
-    }
-  },
+    },
+    isReplyable(userId) {
+      return User.isAuthUser(userId)
+    },
+  }
 }
 </script>
