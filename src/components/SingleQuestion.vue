@@ -22,7 +22,7 @@
             :html="true"
             class="rounded"
         />
-        <!--         replie action-->
+        <!--         replies action-->
         <v-card-actions class="mt-3 d-flex justify-end" v-if="isActionable">
           <v-btn color="success" link
                  :to="{
@@ -64,7 +64,9 @@
         <v-card-actions
         >
           <div v-if="isReplyable(reply.user_id)">
-            <v-btn icon color="orange">
+            <v-btn icon color="orange"
+                   @click="editReply(reply)"
+            >
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
             <v-btn @click="deleteReply(reply.id)" color="error">
@@ -107,7 +109,8 @@ export default {
       question: {},
       isActionable: false,
       replies: [],
-      user_id: null
+      user_id: null,
+      isEditing: false,
     }
   },
   async mounted() {
@@ -163,7 +166,10 @@ export default {
       } catch (error) {
         console.log(error)
       }
-    }
+    },
+    editReply(reply) {
+      this.isEditing = !this.isEditing
+    },
   }
 }
 </script>
