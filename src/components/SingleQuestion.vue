@@ -54,17 +54,23 @@
               outlined
       >
         <v-card-header>
-          <v-card-subtitle class="mt-3">
-            {{ reply.name }}
-            |
-            {{ reply.created_at }}
-          </v-card-subtitle>
+          <v-card-title> {{ reply.name }}</v-card-title>
+          <v-card-subtitle class="mx-2 mt-3">{{ reply.created_at }}</v-card-subtitle>
         </v-card-header>
         <v-card-text>
           {{ reply.reply }}
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions
+        v-if="isActionable"
+        >
+          <v-btn icon color="orange">
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
+          <v-btn icon color="error">
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
           <v-spacer></v-spacer>
+
 
           <v-btn icon color="red">
             <v-icon>mdi-heart</v-icon>
