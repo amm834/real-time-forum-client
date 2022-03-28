@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "highlight.js": "^11.5.0",
+    "nprogress": "^0.2.0",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14",
     "vue3-markdown-it": "^1.0.10",

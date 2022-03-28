@@ -21,6 +21,7 @@ export default createStore({
                 state.errors = e.response.data.errors
             }
         },
+
     },
     getters: {
         isLoggedIn(state) {
