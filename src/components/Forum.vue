@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       questions: [],
-      errors: null
+      errors: null,
     }
   }
 }
