@@ -59,6 +59,7 @@ export default {
       tab: 'edit',
     }
   },
+  emits:['reply'],
   methods: {
     toggleEditMode(tab) {
       this.tab = tab
@@ -66,7 +67,9 @@ export default {
     async replyQuestion() {
       try {
         const res = await axios.post(`/api/questions/${this.slug}/replies`, this.form)
-        console.log(res.data)
+        if (res.status === 201) {
+          this.$emit('reply')
+        }
       } catch (error) {
         console.log(error.response)
       }

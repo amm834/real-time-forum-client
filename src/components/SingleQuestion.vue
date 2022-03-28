@@ -22,6 +22,7 @@
             :html="true"
             class="rounded"
         />
+        <!--         replie action-->
         <v-card-actions class="mt-3 d-flex justify-end" v-if="isActionable">
           <v-btn color="success" link
                  :to="{
@@ -66,7 +67,7 @@
             <v-btn icon color="orange">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <v-btn icon color="error">
+            <v-btn @click="deleteReply(reply.id)" color="error">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
           </div>
@@ -81,6 +82,7 @@
       <!--     reply-->
       <reply-question
           :slug="question.slug"
+          @reply="getAllReplies"
       ></reply-question>
 
     </v-container>
@@ -151,6 +153,17 @@ export default {
     isReplyable(userId) {
       return User.isAuthUser(userId)
     },
+    async deleteReply(replyId) {
+      try {
+        const slug = this.$route.params.slug;
+        const response = await axios.delete(`/api/questions/${slug}/replies/${replyId}`)
+        if (response.status === 204) {
+          this.getAllReplies()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 }
 </script>
